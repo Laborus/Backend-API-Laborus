@@ -1,0 +1,17 @@
+{
+  "name": "backend-api-laborus",
+  "version": "1.0.0",
+  "description": "API Backend for Laborus Application",
+  "main": "index.js",
+  "scripts": {
+    "start": "node --watch --no-warnings index"
+  },
+  "keywords": [],
+  "author": "Laborus Team",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongoose": "^7.6.0"
+  }
+}
