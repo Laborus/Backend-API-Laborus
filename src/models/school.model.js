@@ -1,38 +1,17 @@
 const mongoose = require("mongoose");
+const User = require("../models/user.model");
 
 const schoolSchema = new mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
   cnpj: {
     type: String,
     required: true,
   },
-  email: {
+
+  role: {
     type: String,
-    required: true,
+    enum: ["School"],
   },
-  password: {
-    type: String,
-    required: true,
-  },
-  location: {
-    type: String, // Armazena a localização da API como "Cidade - UF" (ex.: "São Paulo - SP").
-    required: true,
-  },
-  profileImage: {
-    type: String,
-    default: "",
-  },
-  bannerImage: {
-    type: String,
-    default: "",
-  },
-  description: {
-    type: String,
-    required: true,
-  },
+
   followers: [
     {
       type: mongoose.Schema.Types.ObjectId,
@@ -45,4 +24,6 @@ const schoolSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("School", schoolSchema);
+const School = User.discriminator("School", schoolSchema);
+
+module.exports = School;
