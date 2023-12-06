@@ -1,4 +1,5 @@
 const express = require("express");
+// const expressValidator = require("express-validator");
 const dotenv = require("dotenv");
 const connectToDatabase = require("./src/database/connect");
 const indexRouter = require("./src/routes/index");
@@ -11,6 +12,7 @@ dotenv.config();
 
 // Route prefixes
 
+// app.use(expressValidator());
 app.use(express.json());
 app.use("/", indexRouter);
 app.use("/api/", apiRouter);

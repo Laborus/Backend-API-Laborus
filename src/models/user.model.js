@@ -4,16 +4,21 @@ const userSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true,
+    min: 3,
+    max: 25,
   },
 
   email: {
     type: String,
     required: true,
+    max: 50,
+    unique: true,
   },
 
   password: {
     type: String,
     required: true,
+    min: 8,
   },
 
   location: {
@@ -23,12 +28,12 @@ const userSchema = new mongoose.Schema({
 
   profileImage: {
     type: String,
-    default: "",
+    default: "./public/profileImage_default.png",
   },
 
   bannerImage: {
     type: String,
-    default: "",
+    default: "./public/bannerImage_default.png",
   },
 
   description: {

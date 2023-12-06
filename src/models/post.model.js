@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const User = require("./user");
+const User = require("../models/user.model");
 
 const postSchema = new mongoose.Schema({
   user: {
@@ -10,10 +10,6 @@ const postSchema = new mongoose.Schema({
   media: {
     type: String, // URL da imagem ou vídeo
   },
-  code: {
-    type: String, // Código formatado com sintaxeHighlight (opcional)
-    default: "", // Pode ser vazio por padrão
-  },
   visibility: {
     type: String,
     enum: ["public", "private"], // Public ou private
@@ -23,6 +19,11 @@ const postSchema = new mongoose.Schema({
     type: Number,
     default: 0, // Inicializa com zero curtidas
   },
+  route: {
+    type: String,
+    enum: ["global", "campus", "event"],
+    required: true,
+  },
   comments: [
     {
       user: {
@@ -30,6 +31,11 @@ const postSchema = new mongoose.Schema({
         ref: "User", // Referência ao modelo de usuário
       },
       text: String, // Texto do comentário
+      visibility: {
+        type: String,
+        enum: ["public", "private"],
+        default: "public",
+      },
     },
   ],
   reportCount: {

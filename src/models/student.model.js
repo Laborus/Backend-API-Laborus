@@ -18,8 +18,8 @@ const studentSchema = new mongoose.Schema({
 
   connections: [
     {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Student",
+      type: Array,
+      default: [],
     },
   ],
 
